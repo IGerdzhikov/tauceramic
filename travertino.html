@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>TAU ceramic — Travertino</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script src="js/runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Onest:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#141414}a:hover{color:#8A6A45}
+.tex-cal{background-image:url(assets/calacatta.jpg)}
+.tex-stat{background-image:url(assets/statuario.jpg)}
+.tex-crema{background-image:url(assets/crema.jpg)}
+.tex-nero{background-image:url(assets/nero.jpg)}
+.tex-trav{background-image:url(assets/travertine.jpg)}
+.tex-pietra{background-image:url(assets/pietra.jpg)}
+.tex-conc{background-image:url(assets/concrete.jpg)}
+.tex-antr{background-image:url(assets/antracite.jpg)}
+.tex-oak{background-image:url(assets/oak.jpg)}
+.tex-walnut{background-image:url(assets/walnut.jpg)}
+.tex-terr{background-image:url(assets/terrazzo.jpg)}
+.tex-wood{background-image:url(assets/wood.jpg)}
+.tex-brass{background-image:url(assets/brass.jpg)}
+.tex-steel{background-image:url(assets/steel.jpg)}
+.tex-porc{background-image:url(assets/porcelain.jpg)}
+.cover{background-size:cover;background-position:center}
+.nl{text-decoration:none}
+.nl:hover{color:#8A6A45}
+.btn-dark{transition:background .25s}
+.btn-dark:hover{background:#8A6A45 !important}
+.chip{transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:#141414 !important}
+.vtile{transition:left .5s,top .5s,width .5s,height .5s}
+.card .cimg{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .cimg{transform:scale(1.04)}
+input[type=number]::-webkit-inner-spin-button{opacity:0}
+@media (max-width: 1000px){
+.burger{display:flex !important}
+.wordmark{white-space:normal !important;font-size:24vw !important;line-height:0.85 !important}
+.pgrid,.spec{grid-template-columns:minmax(0,1fr) !important}
+.pgrid>*,.spec>*{grid-column:auto !important}
+.nav-links{display:none !important}
+.stage{height:460px !important}
+.rel{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.info{position:static !important}
+.slabwrap{transform:scale(.52)}
+}
+@media (max-width: 600px){
+.rel{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:14px !important}
+.stage-r,.wall-label{display:none !important}
+}
+</style>
+</helmet>
+<div style="font-family: 'Onest', system-ui, sans-serif; color: #141414; background: #FFFFFF; overflow-x: hidden">
+
+<!-- Header -->
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid #ECE9E4">
+<div style="max-width: 1440px; margin: 0 auto; padding: 18px clamp(20px, 4vw, 64px); display: flex; align-items: center; justify-content: space-between; gap: 32px">
+<a href="index.html" aria-label="TAU ceramic — начало" style="display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: #141414">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 500; letter-spacing: 0.18em; line-height: 1">TAU</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: #5E5A55">ceramic</span>
+</a>
+<nav class="nav-links" aria-label="Основно меню" style="display: flex; gap: 36px; font-size: 14px">
+<a href="index.html" class="nl" style="color: #8A6A45">Плочки</a>
+<a href="index.html" class="nl">Баня</a>
+<a href="index.html" class="nl">Мебели</a>
+<a href="index.html" class="nl">Кухня</a>
+<a href="index.html" class="nl">3D проекти</a>
+<a href="index.html" class="nl">Промоции</a>
+<a href="index.html" class="nl">Шоурум</a>
+</nav>
+<button type="button" class="burger" aria-label="Отвори менюто" onClick="{{openMenu}}" style="width: 44px; height: 44px; border: 0; background: transparent; display: none; align-items: center; justify-content: center; cursor: pointer; color: #141414"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h18M3 16h18"></path></svg></button>
+<button type="button" aria-label="Търсене" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #141414"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+</div>
+</header>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Меню" style="position: fixed; inset: 0; z-index: 60; background: #FFFFFF; display: flex; flex-direction: column; padding: 18px 20px 32px; box-sizing: border-box; overflow-y: auto">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 48px">
+<a href="index.html" onClick="{{closeMenu}}" aria-label="TAU ceramic — начало" style="display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: #141414"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 500; letter-spacing: 0.18em; line-height: 1">TAU</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: #5E5A55">ceramic</span></a>
+<button type="button" aria-label="Затвори менюто" onClick="{{closeMenu}}" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #141414"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</div>
+<nav aria-label="Мобилно меню" style="display: flex; flex-direction: column; margin-top: 32px; border-top: 1px solid #ECE9E4">
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #8A6A45">Плочки<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #141414">Баня<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #141414">Мебели<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #141414">Кухня<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #141414">3D проекти<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #141414">Промоции<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid #ECE9E4; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 38px; line-height: 1; text-decoration: none; color: #141414">Шоурум<span style="color: #B5B0A9; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></span></a>
+</nav>
+<div style="margin-top: auto; padding-top: 40px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.5; color: #5E5A55"><span>Шоурум — бул. България 184, Пловдив</span><span>Пн–Пт 09:00–18:00 · Сб 10:00–14:00</span></div>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: center; min-height: 56px; background: #141414; color: #FFFFFF; text-decoration: none; font-size: 15px">Запазете консултация</a>
+</div>
+</div>
+</sc-if>
+
+<!-- Breadcrumb -->
+<div style="max-width: 1440px; margin: 0 auto; padding: 24px clamp(20px, 4vw, 64px) 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5E5A55; display: flex; gap: 10px; flex-wrap: wrap">
+<a href="index.html" class="nl" style="color: #5E5A55">Начало</a><span>/</span><a href="index.html" class="nl" style="color: #5E5A55">Плочки</a><span>/</span><span>{{p.cat}}</span><span>/</span><span style="color: #141414">{{v.name}}</span>
+</div>
+
+<!-- Product -->
+<section style="max-width: 1440px; margin: 0 auto; padding: 32px clamp(20px, 4vw, 64px) clamp(64px, 8vw, 120px)">
+<div class="pgrid" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 40px; align-items: start">
+
+<!-- Stage -->
+<div style="grid-column: span 7; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+<div class="stage" style="position: relative; height: 760px; background: #F7F6F3; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<sc-if value="{{isSlab}}" hint-placeholder-val="{{ true }}">
+<div class="slabwrap" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px">
+<div style="display: flex; align-items: stretch; gap: 22px">
+<div style="{{slabStyle}}">
+<div class="{{texCls}}" style="{{slabTexStyle}}"></div>
+<sc-if value="{{isPolished}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255,255,255,0) 38%, rgba(255,255,255,0.55) 47%, rgba(255,255,255,0.08) 53%, rgba(255,255,255,0) 60%)"></div>
+</sc-if>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 28px">
+<span style="width: 9px; height: 1px; background: #141414"></span>
+<span style="flex: 1; width: 1px; background: #141414"></span>
+<span style="writing-mode: vertical-rl; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; white-space: nowrap">{{dimH}} СМ</span>
+<span style="flex: 1; width: 1px; background: #141414"></span>
+<span style="width: 9px; height: 1px; background: #141414"></span>
+</div>
+</div>
+<div style="{{dimWStyle}}">
+<span style="width: 1px; height: 9px; background: #141414"></span>
+<span style="flex: 1; height: 1px; background: #141414"></span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em">{{dimW}} СМ</span>
+<span style="flex: 1; height: 1px; background: #141414"></span>
+<span style="width: 1px; height: 9px; background: #141414"></span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
+<div class="{{texCls}}" style="{{detailStyle}}"></div>
+<sc-if value="{{isPolished}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255,255,255,0) 40%, rgba(255,255,255,0.4) 48%, rgba(255,255,255,0) 58%)"></div>
+</sc-if>
+</sc-if>
+<span style="position: absolute; left: 22px; top: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5A55">{{stageLabel}}</span>
+<span class="stage-r" style="position: absolute; right: 22px; top: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5A55">{{finishLabel}}</span>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<sc-for list="{{views}}" as="vw" hint-placeholder-count="2">
+<button type="button" class="chip" onClick="{{vw.pick}}" aria-pressed="{{vw.on}}" style="{{vw.style}}">{{vw.label}}</button>
+</sc-for>
+<a href="#vis" class="chip" style="min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 10px; border: 1px solid #D5D1CB; font-size: 14px; text-decoration: none; color: #141414">Визуализатор на стена <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4v16M6 14l6 6 6-6"></path></svg></a>
+</div>
+</div>
+
+<!-- Info -->
+<div class="info" style="grid-column: 9 / span 4; position: sticky; top: 110px; display: flex; flex-direction: column; gap: 28px; min-width: 0">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E5A55">Серия {{p.series}} · Арт. № [КОД]</span>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 5.2vw, 84px); line-height: 0.9; letter-spacing: -0.02em">{{v.name}}</h1>
+<span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 24px; color: {{accent}}">{{p.sub}}</span>
+</div>
+<div style="display: flex; align-items: baseline; gap: 12px; padding: 20px 0; border-top: 1px solid #E4E0DA; border-bottom: 1px solid #E4E0DA">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 44px; line-height: 1">{{priceLabel}}</span>
+<span style="font-size: 14px; color: #5E5A55">€ / м² с ДДС</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; color: #5E5A55">Цвят — {{v.name}}</span>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<sc-for list="{{variants}}" as="c" hint-placeholder-count="2">
+<button type="button" onClick="{{c.pick}}" aria-label="{{c.name}}" aria-pressed="{{c.on}}" class="cover {{c.tex}}" style="{{c.style}}"></button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; color: #5E5A55">Формат, см</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<sc-for list="{{fmts}}" as="f" hint-placeholder-count="3">
+<button type="button" class="chip" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; color: #5E5A55">Повърхност</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<sc-for list="{{finishes}}" as="f" hint-placeholder-count="2">
+<button type="button" class="chip" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<!-- Calculator -->
+<div style="background: #F7F6F3; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; line-height: 1">Колко ви трябват?</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #5E5A55">КАЛКУЛАТОР</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="area" style="font-size: 13px; color: #5E5A55">Площ за облицоване, м²</label>
+<div style="display: flex; align-items: stretch; background: #FFFFFF; border: 1px solid #D5D1CB">
+<button type="button" aria-label="Намали площта" onClick="{{dec}}" style="width: 52px; min-height: 52px; border: 0; background: transparent; font-size: 22px; cursor: pointer; color: #141414">−</button>
+<input id="area" type="number" min="0" step="0.5" value="{{area}}" onChange="{{onArea}}" style="flex: 1; min-width: 0; border: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; outline: none; background: transparent; color: #141414">
+<button type="button" aria-label="Увеличи площта" onClick="{{inc}}" style="width: 52px; min-height: 52px; border: 0; background: transparent; font-size: 22px; cursor: pointer; color: #141414">+</button>
+</div>
+</div>
+<label style="display: flex; align-items: center; gap: 12px; font-size: 14px; cursor: pointer; min-height: 32px">
+<input type="checkbox" checked="{{reserve}}" onChange="{{toggleReserve}}" style="width: 18px; height: 18px; accent-color: #141414">
+Добави 10% резерв за рязане
+</label>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding-top: 16px; border-top: 1px solid #E4E0DA">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1">{{pieces}}</span><span style="font-size: 12px; color: #5E5A55">плочки</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1">{{covered}}</span><span style="font-size: 12px; color: #5E5A55">м² общо</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1">{{total}}</span><span style="font-size: 12px; color: #5E5A55">€ сума</span></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" class="btn-dark" onClick="{{sendInquiry}}" style="min-height: 60px; border: 0; background: #141414; color: #FFFFFF; font-family: 'Onest', sans-serif; font-size: 15px; letter-spacing: 0.02em; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px">{{inquiryLabel}}</button>
+<a href="index.html" class="chip" style="min-height: 56px; display: flex; align-items: center; justify-content: center; border: 1px solid #D5D1CB; text-decoration: none; color: #141414; font-size: 15px">Вижте мострата в шоурума</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #3D3A36">
+<span style="display: flex; gap: 12px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.4"><path d="M3 12a9 9 0 109-9"></path><path d="M3 4v5h5"></path></svg>14 дни за връщане без причина</span>
+<span style="display: flex; gap: 12px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.4"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17" cy="18" r="1.6"></circle></svg>Безплатна доставка в Пловдив до 50 кг</span>
+<span style="display: flex; gap: 12px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.4"><path d="M4 5h16v11H8l-4 4z"></path></svg>Професионална консултация с експерт</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Visualizer -->
+<section id="vis" style="border-top: 1px solid #ECE9E4">
+<div style="max-width: 1440px; margin: 0 auto; padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 64px)">
+<div class="spec" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 24px; align-items: end; margin-bottom: 40px">
+<div style="grid-column: span 7; display: flex; flex-direction: column; gap: 22px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5E5A55">Визуализатор</span>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(44px, 5vw, 80px); line-height: 0.95; letter-spacing: -0.02em">Положете я, <i style="color: {{accent}}">преди да я купите</i>.</h2>
+</div>
+<p style="grid-column: 9 / span 4; margin: 0; font-size: 16px; line-height: 1.65; font-weight: 300; color: #3D3A36">Сменете цвета, формата, схемата на редене и фугата — стената се пренарежда в реален мащаб. Стена 3,6 × 2,4 м.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 28px 48px; margin-bottom: 24px; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #5E5A55">Формат</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{fmts}}" as="f" hint-placeholder-count="3"><button type="button" class="chip" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}">{{f.label}}</button></sc-for></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #5E5A55">Схема на редене</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{patterns}}" as="pt" hint-placeholder-count="3"><button type="button" class="chip" onClick="{{pt.pick}}" aria-pressed="{{pt.on}}" style="{{pt.style}}">{{pt.label}}</button></sc-for></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #5E5A55">Фуга</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{grouts}}" as="g" hint-placeholder-count="3"><button type="button" class="chip" onClick="{{g.pick}}" aria-pressed="{{g.on}}" style="{{g.style}}"><span style="{{g.dot}}"></span>{{g.label}}</button></sc-for></div>
+</div>
+</div>
+<div style="position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; background: {{groutColor}}">
+<div style="{{wallFilter}}">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="12">
+<div class="vtile {{texCls}}" style="{{t.style}}"></div>
+</sc-for>
+</div>
+<sc-if value="{{isPolished}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(112deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.32) 42%, rgba(255,255,255,0) 54%)"></div>
+</sc-if>
+<div style="position: absolute; left: 36%; top: 14%; width: 22%; height: 38%; border-radius: 999px; background: linear-gradient(160deg, #EEF2F2 0%, #DCE3E4 60%, #E8EDED 100%); box-shadow: 0 0 0 6px rgba(20,20,20,0.85), 0 30px 50px -30px rgba(0,0,0,0.5)"></div>
+<div style="position: absolute; left: 30%; top: 60%; width: 34%; height: 4%; background: #FBFAF8; box-shadow: 0 2px 0 rgba(0,0,0,0.06)"></div>
+<div class="cover tex-wood" style="position: absolute; left: 30%; top: 64%; width: 34%; height: 13%; box-shadow: 0 34px 40px -24px rgba(0,0,0,0.55)"></div>
+<div class="cover tex-brass" style="position: absolute; left: 46.4%; top: 55.5%; width: 1.2%; height: 4.5%"></div>
+<div class="wall-label" style="position: absolute; left: 20px; bottom: 20px; background: #FFFFFF; padding: 12px 16px; display: flex; gap: 18px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase">
+<span>{{v.name}} · {{fmtLabel}}</span><span style="color: #5E5A55">{{patternLabel}}</span><span style="color: #5E5A55">≈ {{wallPieces}} плочки</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Specs -->
+<section style="border-top: 1px solid #ECE9E4">
+<div class="spec" style="max-width: 1440px; margin: 0 auto; padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 64px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 48px">
+<div style="grid-column: span 7; display: flex; flex-direction: column; gap: 28px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5E5A55">Технически характеристики</span>
+<div style="display: flex; flex-direction: column; font-size: 15px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Материал</span><span>{{p.material}}</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Ефект</span><span>{{p.effect}}</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Цвят</span><span>{{v.name}}</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Формат</span><span>{{fmtLabel}} см</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Повърхност</span><span>{{finishName}}</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Приложение</span><span>{{p.app}}</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA"><span style="color: #5E5A55">Дебелина</span><span>[ДЕБЕЛИНА] мм</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 16px; padding: 16px 0; border-top: 1px solid #E4E0DA; border-bottom: 1px solid #E4E0DA"><span style="color: #5E5A55">Производител</span><span>[ПРОИЗВОДИТЕЛ]</span></div>
+</div>
+</div>
+<div style="grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 28px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5E5A55">Полагане и грижа</span>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 24px">Равна основа — половината резултат</span><span style="font-size: 15px; line-height: 1.6; color: #5E5A55">При големи и удължени формати използвайте подходящо лепило и система за нивелиране, за да няма разлика в ръбовете.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 24px">Нежно почистване</span><span style="font-size: 15px; line-height: 1.6; color: #5E5A55">Неутрален препарат и мека кърпа. Избягвайте абразивни продукти, особено върху полирана повърхност.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 24px">Една партида за целия проект</span><span style="font-size: 15px; line-height: 1.6; color: #5E5A55">Поръчайте цялото количество наведнъж — така тонът и калибърът ще бъдат еднакви.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- More products -->
+<section style="border-top: 1px solid #ECE9E4">
+<div style="max-width: 1440px; margin: 0 auto; padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 64px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 4.4vw, 68px); line-height: 0.95; letter-spacing: -0.02em">Още от <i style="color: {{accent}}">каталога</i>.</h2>
+<a href="index.html" style="font-size: 14px">Всички плочки</a>
+</div>
+<div class="rel" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px">
+<sc-for list="{{others}}" as="o" hint-placeholder-count="5">
+<a href="{{o.href}}" class="card" style="display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: #141414">
+<div style="aspect-ratio: 3 / 4; overflow: hidden; position: relative">
+<div class="cimg cover {{o.tex}}" style="position: absolute; inset: 0"></div>
+<div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #FFFFFF"></div>
+<div style="position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: #FFFFFF"></div>
+</div>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5E5A55">{{o.cat}}</span>
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; line-height: 1.05">{{o.name}}</span>
+<span style="font-size: 13px; color: #5E5A55">{{o.fmts}}</span>
+</a>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top: 1px solid #ECE9E4">
+<div style="max-width: 1440px; margin: 0 auto; padding: 56px clamp(20px, 4vw, 64px) 36px; display: flex; flex-direction: column; gap: 40px">
+<div class="wordmark" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(80px, 16vw, 240px); line-height: 0.78; letter-spacing: 0.04em; white-space: nowrap; overflow: hidden">TAU <i style="color: {{accent}}">ceramic</i></div>
+<div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid #ECE9E4; font-size: 13px; color: #5E5A55">
+<span>© 2026 TAU ceramic · бул. България 184, Пловдив · Пн–Пт 09:00–18:00 · Сб 10:00–14:00</span>
+<span style="display: flex; gap: 24px"><a href="#" class="nl" style="color: #5E5A55">Facebook</a><a href="#" class="nl" style="color: #5E5A55">Instagram</a><a href="#" class="nl" style="color: #5E5A55">Pinterest</a></span>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"product":{"editor":"enum","options":["calacatta","nero","travertino","cemento","rovere","terrazzo"],"default":"travertino"},"accent":{"editor":"color","default":"#8A6A45","options":["#8A6A45","#141414","#4F5D52","#7A3B2E"]},"pricePerM2":{"editor":"float","default":0,"min":0,"step":0.5,"unit":"€/м²"},"$preview":{"width":1440,"height":4300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { fmt: null, finish: null, variant: 0, view: 'slab', pattern: null, grout: null, area: 12, reserve: true, sent: false, menuOpen: false };
+  }
+  renderVals() {
+    const PRODUCTS = {
+      calacatta: { file: 'calacatta.html', series: 'Marmo', cat: 'Полиран гранитогрес', sub: 'Гранитогрес с ефект мрамор', material: 'Гранитогрес (порцеланова плочка)', effect: 'Мрамор', app: 'Под и стена', variants: [['Calacatta', 'tex-cal'], ['Statuario', 'tex-stat'], ['Crema', 'tex-crema']], fmts: ['60x60', '60x120', '120x120'], fmt: '60x120', finishes: ['pol', 'mat'], pattern: 'half', grout: 'white', texW: 120, texH: 120, steps: 0, plank: false },
+      nero: { file: 'nero.html', series: 'Nero', cat: 'Полиран гранитогрес', sub: 'Гранитогрес с ефект черен мрамор', material: 'Гранитогрес (порцеланова плочка)', effect: 'Черен мрамор', app: 'Под и стена', variants: [['Nero Marquina', 'tex-nero']], fmts: ['60x120', '120x120'], fmt: '120x120', finishes: ['pol'], pattern: 'straight', grout: 'graphite', texW: 120, texH: 120, steps: 0, plank: false },
+      travertino: { file: 'travertino.html', series: 'Pietra', cat: 'Матов гранитогрес', sub: 'Гранитогрес с ефект травертин', material: 'Гранитогрес (порцеланова плочка)', effect: 'Естествен камък', app: 'Под и стена, вътрешно и външно', variants: [['Travertino', 'tex-trav'], ['Pietra Bianca', 'tex-pietra']], fmts: ['60x60', '60x120'], fmt: '60x120', finishes: ['mat'], pattern: 'third', grout: 'white', texW: 120, texH: 120, steps: 0, plank: false },
+      cemento: { file: 'cemento.html', series: 'Urban', cat: 'Матов гранитогрес', sub: 'Гранитогрес с ефект бетон', material: 'Гранитогрес (порцеланова плочка)', effect: 'Бетон', app: 'Под и стена', variants: [['Cemento', 'tex-conc'], ['Antracite', 'tex-antr']], fmts: ['60x60', '60x120', '120x120'], fmt: '120x120', finishes: ['mat'], pattern: 'straight', grout: 'grey', texW: 120, texH: 120, steps: 0, plank: false },
+      rovere: { file: 'rovere.html', series: 'Legno', cat: 'Имитация на дърво', sub: 'Гранитогрес с ефект дърво', material: 'Гранитогрес (порцеланова плочка)', effect: 'Дърво', app: 'Под', variants: [['Rovere', 'tex-oak'], ['Noce', 'tex-walnut']], fmts: ['20x120'], fmt: '20x120', finishes: ['mat'], pattern: 'third', grout: 'grey', texW: 120, texH: 80, steps: 4, plank: true },
+      terrazzo: { file: 'terrazzo.html', series: 'Terrazzo', cat: 'Декоративни плочки', sub: 'Декоративна плочка с ефект терацо', material: 'Гранитогрес (порцеланова плочка)', effect: 'Терацо', app: 'Под и стена', variants: [['Terrazzo', 'tex-terr']], fmts: ['60x60'], fmt: '60x60', finishes: ['mat', 'pol'], pattern: 'straight', grout: 'white', texW: 90, texH: 90, steps: 0, plank: false }
+    };
+    const s = this.state;
+    const pid = PRODUCTS[this.props.product] ? this.props.product : 'travertino';
+    const p = PRODUCTS[pid];
+    const accent = this.props.accent ?? '#8A6A45';
+    const price = Number(this.props.pricePerM2 ?? 0) || 0;
+    const fmt = p.fmts.includes(s.fmt) ? s.fmt : p.fmt;
+    const finish = p.finishes.includes(s.finish) ? s.finish : p.finishes[0];
+    const vi = s.variant < p.variants.length ? s.variant : 0;
+    const v = { name: p.variants[vi][0] };
+    const texCls = p.variants[vi][1];
+    const pattern = s.pattern || p.pattern;
+    const grout = s.grout || p.grout;
+    const [fw, fh] = fmt.split('x').map(Number);
+    const chip = (on) => 'min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 10px; font-family: \'Onest\', sans-serif; font-size: 14px; cursor: pointer; border: 1px solid ' + (on ? '#141414' : '#D5D1CB') + '; background: ' + (on ? '#141414' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#141414') + ';';
+    const fmts = p.fmts.map((k) => ({ label: k.replace('x', ' × '), on: fmt === k, style: chip(fmt === k), pick: () => this.setState({ fmt: k }) }));
+    const FIN = { pol: 'Полиран', mat: 'Матов' };
+    const finishes = p.finishes.map((k) => ({ label: FIN[k], on: finish === k, style: chip(finish === k), pick: () => this.setState({ finish: k }) }));
+    const variants = p.variants.map(([name, tex], i) => ({ name, tex, on: i === vi, style: 'width: 56px; height: 56px; padding: 0; border: 0; cursor: pointer; ' + (i === vi ? 'box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3px #141414;' : 'box-shadow: 0 0 0 1px #E4E0DA;'), pick: () => this.setState({ variant: i }) }));
+    const views = [['slab', 'Плоча в пропорция'], ['detail', 'Детайл на шарката']].map(([k, l]) => ({ label: l, on: s.view === k, style: chip(s.view === k), pick: () => this.setState({ view: k }) }));
+    const PAT = { straight: ['Права', 0], half: ['Разминаване 1/2', 0.5], third: ['Разминаване 1/3', 1 / 3] };
+    const patterns = Object.keys(PAT).map((k) => ({ label: PAT[k][0], on: pattern === k, style: chip(pattern === k), pick: () => this.setState({ pattern: k }) }));
+    const GR = { white: ['Бяла', '#F4F2EE'], grey: ['Сива', '#A9A49D'], graphite: ['Графит', '#3A3836'] };
+    const grouts = Object.keys(GR).map((k) => ({ label: GR[k][0], on: grout === k, style: chip(grout === k), dot: 'width: 12px; height: 12px; border-radius: 50%; background: ' + GR[k][1] + '; box-shadow: 0 0 0 1px rgba(127,127,127,0.5);', pick: () => this.setState({ grout: k }) }));
+
+    // stage, 1 cm = 4.6 px; planks shown lengthwise
+    const k = 4.6;
+    const tw = Math.max(fw, fh), th = Math.min(fw, fh);
+    const dW = p.plank ? tw : fw, dH = p.plank ? th : fh;
+    const sw = Math.round(dW * k), sh = Math.round(dH * k);
+    const matte = finish === 'mat';
+    const texFilter = matte && p.finishes.includes('pol') ? 'filter: saturate(0.8) contrast(0.9) brightness(0.985);' : '';
+    const slabStyle = 'position: relative; width: ' + sw + 'px; height: ' + sh + 'px; overflow: hidden; box-shadow: 0 40px 60px -34px rgba(20,20,20,0.45), 0 2px 4px rgba(20,20,20,0.06); transition: width .5s, height .5s;';
+    const slabTexStyle = 'position: absolute; inset: 0; background-size: ' + Math.round(p.texW * k) + 'px ' + Math.round(p.texH * k) + 'px; background-position: ' + (p.steps ? '0% 33.333%' : '30% 40%') + '; ' + texFilter;
+    const dimWStyle = 'display: flex; align-items: center; gap: 8px; width: ' + sw + 'px; align-self: flex-start;';
+    const detailStyle = 'position: absolute; inset: 0; background-size: ' + (p.plank ? '200% auto' : '260%') + '; background-position: 42% 38%; ' + texFilter;
+
+    // wall 360 x 240 cm
+    const W = 360, H = 240;
+    const off = PAT[pattern][1];
+    const tiles = [];
+    const rows = Math.ceil(H / th);
+    for (let r = 0; r < rows; r++) {
+      const o = ((r * off) % 1) * tw;
+      let x = o > 0 ? o - tw : 0;
+      let c = 0;
+      while (x < W) {
+        const hx = ((r * 37 + c * 61 + 11) % 97) / 97, hy = ((r * 53 + c * 29 + 7) % 89) / 89;
+        const py = p.steps ? Math.floor(hy * p.steps) / (p.steps - 1) * 100 : Math.round(hy * 100);
+        tiles.push({ style: 'position: absolute; box-sizing: border-box; border: 1.5px solid ' + GR[grout][1] + '; left: ' + (x / W * 100) + '%; top: ' + (r * th / H * 100) + '%; width: ' + (tw / W * 100) + '%; height: ' + (th / H * 100) + '%; background-size: ' + (p.texW / tw * 100) + '% ' + (p.texH / th * 100) + '%; background-position: ' + Math.round(hx * 100) + '% ' + py + '%;' });
+        x += tw; c++;
+      }
+    }
+
+    // calculator
+    const area = Math.max(0, Number(s.area) || 0);
+    const tileM2 = (fw * fh) / 10000;
+    const pieces = area > 0 ? Math.ceil(area * (s.reserve ? 1.1 : 1) / tileM2) : 0;
+    const coveredN = pieces * tileM2;
+    const num = (n) => n.toFixed(2).replace('.', ',');
+    const step = (d) => () => this.setState({ area: Math.max(0, Math.round(((Number(this.state.area) || 0) + d) * 10) / 10) });
+
+    const others = Object.keys(PRODUCTS).filter((id) => id !== pid).map((id) => {
+      const q = PRODUCTS[id];
+      return { href: q.file, name: q.variants[0][0], tex: q.variants[0][1], cat: q.cat, fmts: q.fmts.map((f) => f.replace('x', ' × ')).join(' · ') + ' см' };
+    });
+
+    return {
+      accent, p, v, texCls,
+      fmts, finishes, variants, views, patterns, grouts, tiles, others,
+      dimW: dW, dimH: dH, fmtLabel: fw + ' × ' + fh,
+      isSlab: s.view === 'slab', isDetail: s.view === 'detail',
+      isPolished: !matte,
+      slabStyle, slabTexStyle, dimWStyle, detailStyle,
+      stageLabel: s.view === 'slab' ? 'В пропорция — ' + fw + ' × ' + fh + ' см' : 'Детайл на шарката',
+      finishLabel: matte ? 'Матова повърхност' : 'Полирана повърхност',
+      finishName: matte ? 'Матова' : 'Полирана, висок гланц',
+      groutColor: GR[grout][1],
+      wallFilter: 'position: absolute; inset: 0; ' + texFilter,
+      patternLabel: PAT[pattern][0],
+      wallPieces: Math.ceil((W * H) / (tw * th)),
+      area: s.area,
+      onArea: (e) => this.setState({ area: e.target.value }),
+      inc: step(0.5), dec: step(-0.5),
+      reserve: s.reserve,
+      toggleReserve: () => this.setState({ reserve: !this.state.reserve }),
+      pieces,
+      covered: num(coveredN),
+      total: price > 0 ? num(coveredN * price) : '—',
+      priceLabel: price > 0 ? num(price) : '[ЦЕНА]',
+      inquiryLabel: s.sent ? 'Запитването е изпратено ✓' : 'Изпратете запитване за ' + pieces + ' плочки',
+      sendInquiry: () => this.setState({ sent: true }),
+      menuOpen: s.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
